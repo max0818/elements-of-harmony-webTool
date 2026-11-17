@@ -41,7 +41,18 @@ def _run_ffmpeg(args):
         raise RuntimeError(f"ffmpeg failed: {e.stderr.decode(errors='ignore')}")
 
 def convert_to_ogg(input_path, output_path):
-    _run_ffmpeg(["-i", input_path, "-c:a", "libvorbis", "-q:a", "10", output_path])
+    _run_ffmpeg([
+        "-i", input_path,
+        "-map_metadata", "-1",      # Отключить копирование любых тегов (очень важно!)
+        "-vn",                      # Игнорировать любые видео/обложки
+        "-ac", "2",                 # Стерео
+        "-ar", "44100",             # Частота 44100 Гц
+        "-c:a", "libvorbis",
+        "-q:a", "10",                # Попробуйте среднее качество (VBR ~160 kbps)
+        "-fflags", "+bitexact",     # Делает файл более "чистым" (без служебных данных ffmpeg)
+        "-flags:a", "+bitexact",    # То же для аудиопотока
+        output_path
+    ])
 
 def convert_to_wav(input_path, output_path):
     _run_ffmpeg(["-i", input_path, "-ac", "1", "-ar", "22050", "-c:a", "pcm_s16le", output_path])
