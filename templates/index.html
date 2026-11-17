@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Rhythm Config Generator</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- Оверлей drag&drop -->
+<div id="dropOverlay" class="drop-overlay hidden">
+  <div class="drop-inner">Отпусти файл, чтобы загрузить 🎵</div>
+</div>
+
+<header>
+  <h1>🎵 Rhythm Config Generator</h1>
+  <p class="sub">Загрузи трек → настрой → скачай конфиг</p>
+</header>
+
+<!-- Оверлей загрузки/анализа -->
+<div id="loadingOverlay" class="loading-overlay hidden">
+  <div class="loading-card">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loadingText">Конвертация в OGG…</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    <div class="loading-sub" id="loadingSub">Пожалуйста, подожди</div>
+  </div>
+</div>
+
+<!-- СТАРТОВЫЙ ЭКРАН -->
+<section id="startScreen" class="start-screen">
+  <div class="drop-zone" id="dropZone">
+    <div class="dz-icon">⬆️</div>
+    <div class="dz-text">Перетащи аудиофайл сюда<br><span>или</span></div>
+    <label class="dz-btn">
+      Выбрать файл
+      <input type="file" id="fileInput" accept="audio/*" hidden>
+    </label>
+    <div id="uploadStatus" class="status"></div>
+  </div>
+</section>
+
+<!-- ОСНОВНОЙ ЭКРАН -->
+<main id="mainScreen" class="hidden">
+  <section class="panel left">
+    <div class="panel-head">
+      <h2>1. Трек</h2>
+      <button id="closeTrackBtn" class="icon-btn" title="Закрыть трек">✕</button>
+    </div>
+    <div id="trackInfo" class="track-info"></div>
+
+    <h2>2. Метаданные</h2>
+    <label>Title <input type="text" id="title"></label>
+    <label>Author <input type="text" id="author"></label>
+    <label>BPM <input type="number" id="bpm" step="0.01"></label>
+    <label>BeginAt <input type="text" id="beginAt" value="00:00.000"></label>
+    <label>EndAt (авто) <input type="text" id="endAt" readonly></label>
+    <label>Speed <input type="number" id="speed" value="3" step="0.1"></label>
+    <label>PunchOffset <input type="text" id="punchOffset" value="00:00.000"></label>
+
+    <h2>3. Score</h2>
+    <div class="score-row">
+      <select id="score1"></select>
+      <select id="score2"></select>
+      <select id="score3"></select>
+    </div>
+
+    <h2>4. Чувствительность</h2>
+	<label>Порог силы (delta): <span id="deltaVal">0.07</span>
+      <input type="range" id="delta" min="0" max="3" step="0.01" value="0.07">
+    </label>
+    <label>Мин. расстояние (сек): <span id="gapVal">0.12</span>
+      <input type="range" id="gap" min="0.01" max="2.0" step="0.01" value="0.12">
+    </label>
+    <label>Порог холда (сек): <span id="holdVal">0.20</span>
+      <input type="range" id="hold" min="0.01" max="3.0" step="0.01" value="0.20">
+    </label>
+
+    <button id="analyzeBtn">⚙️ Пересчитать</button>
+
+    <h2>5. Скачивание</h2>
+    <a id="downloadOggBtn" class="download-link" href="#" download>⬇️ Скачать OGG</a>
+    <button id="downloadBtn">💾 Скачать конфиг (.txt)</button>
+  </section>
+
+  <section class="panel right">
+    <h2>Визуализация</h2>
+        <!-- Полоса тапов/холдов (сверху) -->
+    <canvas id="eventsCanvas" width="900" height="60"></canvas>
+    
+    <!-- Сама волна -->
+    <canvas id="waveCanvas" width="900" height="220"></canvas>
+    
+    <div class="player-row">
+      <button id="playBtn">▶</button>
+      <input type="range" id="seek" min="0" max="1000" value="0" step="1">
+      <span id="timeLabel">00:00.000 / 00:00.000</span>
+      <div class="vol-control">
+        <span class="vol-icon">🔊</span>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.3">
+      </div>
+    </div>
+    <audio id="audio"></audio>
+
+    <h2>События <span id="eventCount" class="badge">0</span></h2>
+    <div id="eventList" class="event-list"></div>
+
+    <h2>Предпросмотр конфига</h2>
+    <pre id="configPreview" class="preview"></pre>
+  </section>
+</main>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
