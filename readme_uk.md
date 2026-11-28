@@ -1,5 +1,5 @@
-<img width="1920" height="1020" alt="Знімок екрана 2026-11-28 162034" src="https://github.com" />
-<img width="1920" height="1020" alt="Знімок екрана 2026-11-28 162051" src="https://github.com" />
+<img width="1920" height="1020" alt="Снимок экрана 2026-11-28 162034" src="https://github.com/user-attachments/assets/5b30b84b-dfe8-4d6e-9ea5-1bd3a3cda681" />
+<img width="1920" height="1020" alt="Снимок экрана 2026-11-28 162051" src="https://github.com/user-attachments/assets/3150a385-5450-48de-99ec-d59b725ef0d7" />
 
 # 🎵 Elements of Harmony — WebTool
 
