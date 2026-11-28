@@ -1,6 +1,6 @@
 # 🎵 Elements of Harmony — WebTool
 
-## Select language
+## README
 
 - [🇬🇧 (English)](readme-en.md)
 - [🇷🇺 (Русский)](readme-ru.md)
