@@ -9,7 +9,7 @@
 - [How to Run](#how-to-run)
 - [How to Use](#how-to-use)
 - [Screenshots](#screenshots)
-- [License](license.md)
+- [MIT license](license_en.md)
 
 ### Terms
 - Tap — a single press in the minigame
