@@ -1,3 +1,9 @@
+<img width="1920" height="1020" alt="Снимок экрана 2026-11-28 162051" src="https://github.com/user-attachments/assets/3150a385-5450-48de-99ec-d59b725ef0d7" />
+<img width="1920" height="1020" alt="Снимок экрана 2026-11-28 162034" src="https://github.com/user-attachments/assets/5b30b84b-dfe8-4d6e-9ea5-1bd3a3cda681" />
+<img width="1920" height="1020" alt="Снимок экрана 2026-11-28 161933" src="https://github.com/user-attachments/assets/a9dcb7db-ae48-474a-9300-42f9322a21de" />
+
+
+
 # 🎵 Elements of Harmony — WebTool
 
 ## Содержание
