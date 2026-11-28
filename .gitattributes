@@ -1,6 +1,10 @@
+.gitattributes export-ignore
+
 readme.md export-ignore
 readme_en.md export-ignore
 readme_ru.md export-ignore
 readme_uk.md export-ignore
-license.md export-ignore
-.gitattributes export-ignore
+
+license_en.md export-ignore
+license_ru.md export-ignore
+license_uk.md export-ignore
